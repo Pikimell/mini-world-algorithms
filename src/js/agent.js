@@ -1,12 +1,14 @@
+const currentAgent = { x: -1, y: -1 };
+
 class Agent {
+  static HAPPY = 58;
+
   static TYPES = {
-    t1: '#D16BA5',
-    t2: '86A8E7',
-    t3: '#86A8E7',
-    t4: '#D16BA5',
-    t5: 'yellow',
-    t6: 'green',
+    t1: '#D16BA5', // розовый
+    t2: '#86A8E7', // голубой
   };
+  static world = [];
+  static empty = [];
 
   constructor({ x = 0, y = 0, size = 10, type = 0 }) {
     this.x = x;
@@ -18,10 +20,14 @@ class Agent {
   show() {
     const color = Object.values(Agent.TYPES)[this.type];
     fill(color);
-
-    if (this.x === 50 && this.y === 50) {
-      fill('red');
+    if (this.x === currentAgent.x && this.y === currentAgent.y) {
+      fill('green');
     }
+
+    square(this.x * this.size, this.y * this.size, this.size);
+  }
+  clear() {
+    fill('white');
     square(this.x * this.size, this.y * this.size, this.size);
   }
 
@@ -30,48 +36,61 @@ class Agent {
   }
 
   getNeighbors() {
-    const x = this.x;
-    const y = this.y;
-
     const result = [];
 
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
-        if (i == 0 && j == 0) continue;
-        result.push({ x: x + j, y: y + i });
+        const x = this.x + j;
+        const y = this.y + i;
+        const row = Agent.world[y];
+
+        if (!row) continue;
+        const agent = row[x];
+
+        if (!agent || (i == 0 && j == 0)) continue;
+        result.push(agent);
       }
     }
 
     return result;
   }
 
-  changeType(options) {
-    const countTypes = Object.values(Agent.TYPES).length;
-    const nextType = (this.type + 1) % countTypes;
-    const types = this.getNeighborsTypes(options);
-    // if (this.isTestAgent()) {
-    //   console.log(this.getPos());
-    //   console.log(types);
-    // }
-    const count = types.filter(i => i.type === nextType).length;
-    return count >= 2 ? nextType : this.type;
-  }
-
-  getNeighborsTypes({ agents = [], width = 0 }) {
+  isHappy() {
+    const happyPercent = Agent.HAPPY / 100;
     const neighbors = this.getNeighbors();
-    const result = [];
+    const filtered = neighbors.filter(el => el.type === this.type);
+    const count = filtered.length;
+    const resultHappyPercent = count / 8;
 
-    for (const { x, y } of neighbors) {
-      const pos = y * width + x;
-      const agent = agents[pos];
-      if (agent) {
-        result.push({ type: agent.type, pos: agent.getPos() });
-      }
+    if (this.isCurrent()) {
+      console.log(neighbors, filtered);
     }
-    return result;
+
+    return resultHappyPercent > happyPercent;
   }
 
-  isTestAgent() {
-    return this.x === 50 && this.y === 50;
+  isCurrent() {
+    const x = this.x === currentAgent.x;
+    const y = this.y === currentAgent.y;
+    return x && y;
+  }
+
+  relocate() {
+    this.clear();
+
+    for (let i = 0; i < Agent.empty.length; i++) {
+      if (this.isHappy()) break;
+      const currentPost = this.getPos();
+      const pos = Agent.empty.splice(i, 1)[0];
+
+      Agent.empty.push(currentPost);
+      Agent.world[pos.y][pos.x] = this;
+      Agent.world[this.y][this.x] = undefined;
+
+      this.x = pos.x;
+      this.y = pos.y;
+    }
+
+    this.show();
   }
 }
