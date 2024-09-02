@@ -1,11 +1,8 @@
-const currentAgent = { x: -1, y: -1 };
-
 class Agent {
   static HAPPY = 58;
-
   static TYPES = {
-    t1: '#D16BA5', // розовый
-    t2: '#86A8E7', // голубой
+    t1: '#D16BA5', // рожевий
+    t2: '#86A8E7', // блакитний
   };
   static world = [];
   static empty = [];
@@ -20,75 +17,60 @@ class Agent {
   show() {
     const color = Object.values(Agent.TYPES)[this.type];
     fill(color);
-    if (this.x === currentAgent.x && this.y === currentAgent.y) {
-      fill('green');
-    }
-
     square(this.x * this.size, this.y * this.size, this.size);
   }
+
   clear() {
     fill('white');
     square(this.x * this.size, this.y * this.size, this.size);
   }
 
-  getPos() {
-    return { x: this.x, y: this.y };
-  }
-
   getNeighbors() {
-    const result = [];
-
+    const neighbors = [];
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) continue;
         const x = this.x + j;
         const y = this.y + i;
-        const row = Agent.world[y];
-
-        if (!row) continue;
-        const agent = row[x];
-
-        if (!agent || (i == 0 && j == 0)) continue;
-        result.push(agent);
+        if (Agent.world[y] && Agent.world[y][x]) {
+          neighbors.push(Agent.world[y][x]);
+        }
       }
     }
-
-    return result;
+    return neighbors;
   }
 
   isHappy() {
-    const happyPercent = Agent.HAPPY / 100;
     const neighbors = this.getNeighbors();
-    const filtered = neighbors.filter(el => el.type === this.type);
-    const count = filtered.length;
-    const resultHappyPercent = count / 8;
-
-    if (this.isCurrent()) {
-      console.log(neighbors, filtered);
-    }
-
-    return resultHappyPercent > happyPercent;
-  }
-
-  isCurrent() {
-    const x = this.x === currentAgent.x;
-    const y = this.y === currentAgent.y;
-    return x && y;
+    const similarNeighbors = neighbors.filter(
+      el => el.type === this.type
+    ).length;
+    return similarNeighbors / 8 > Agent.HAPPY / 100;
   }
 
   relocate() {
+    if (this.isHappy()) return;
+
     this.clear();
 
-    for (let i = 0; i < Agent.empty.length; i++) {
-      if (this.isHappy()) break;
-      const currentPost = this.getPos();
-      const pos = Agent.empty.splice(i, 1)[0];
+    let newPos;
+    const currentPos = { x: this.x, y: this.y };
+    if (Math.random() > 0.5) {
+      newPos = Agent.empty.pop();
+    } else {
+      newPos = Agent.empty.shift();
+    }
 
-      Agent.empty.push(currentPost);
-      Agent.world[pos.y][pos.x] = this;
-      Agent.world[this.y][this.x] = undefined;
+    Agent.world[newPos.y][newPos.x] = this;
+    Agent.world[currentPos.y][currentPos.x] = undefined;
 
-      this.x = pos.x;
-      this.y = pos.y;
+    this.x = newPos.x;
+    this.y = newPos.y;
+
+    if (Math.random() > 0.5) {
+      Agent.empty.push(currentPos);
+    } else {
+      Agent.empty.unshift(currentPos);
     }
 
     this.show();

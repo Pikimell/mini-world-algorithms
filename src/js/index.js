@@ -1,15 +1,15 @@
 const WIDTH = 600;
 const HEIGHT = 600;
-const AGENT_SIZE = 5;
+const AGENT_SIZE = 10;
 
 const LEN_X = WIDTH / AGENT_SIZE;
 const LEN_Y = HEIGHT / AGENT_SIZE;
 
-const EMPTY_PERCENT = 0.08;
+const EMPTY_PERCENT = 0.01;
 const EMPTY_COUNT = Math.round(LEN_X * LEN_Y * EMPTY_PERCENT);
 const EMPTY_POINTS = Array.from({ length: EMPTY_COUNT });
 
-const FRAME_RATE = 100;
+const FRAME_RATE = 1;
 
 let START_GAME = true;
 
@@ -90,10 +90,15 @@ function agentRelocate() {
   agent?.relocate();
   agent?.show();
 }
+
 function draw() {
   if (!START_GAME) return;
-  clearCanvas();
   showAgents();
+
+  for (let item of Agent.empty) {
+    const x = item.x;
+    const y = item.y;
+  }
 }
 
 window.addEventListener('keydown', () => {
