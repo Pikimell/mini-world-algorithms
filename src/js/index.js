@@ -1,10 +1,10 @@
-const WIDTH = 1000;
+const WIDTH = 700;
 const HEIGHT = 700;
-const AGENT_SIZE = 4;
-const agents = [];
+const AGENT_SIZE = 5;
 const LEN_X = WIDTH / AGENT_SIZE;
 const LEN_Y = HEIGHT / AGENT_SIZE;
-let frame = 0;
+let agents = [];
+let frame = 1;
 
 function setup() {
   createCanvas(WIDTH, HEIGHT);
@@ -13,41 +13,33 @@ function setup() {
 }
 
 function setWorld() {
+  agents = new Array(LEN_Y * LEN_X);
   for (let y = 0; y < LEN_Y; y++) {
     for (let x = 0; x < LEN_X; x++) {
-      const type = getRandom(0, Object.values(Agent.TYPES).length - 1);
-      const options = {
-        x,
-        y,
-        size: AGENT_SIZE,
-        type,
-      };
+      const type = Math.floor(Math.random() * Agent.TYPES.length);
+      const options = { x, y, size: AGENT_SIZE, type };
       const agent = new Agent(options);
-      agents.push(agent);
+      agents[y * LEN_X + x] = agent;
     }
   }
 }
 
 function clearCanvas() {
-  fill(255);
-  beginShape();
-  vertex(0, 0);
-  vertex(0, HEIGHT);
-  vertex(WIDTH, HEIGHT);
-  vertex(WIDTH, 0);
-  endShape();
+  background(255);
 }
 
 function draw() {
+  if (frame++ % 5 !== 0) return;
   clearCanvas();
-  const copy = [];
-  for (const agent of agents) {
+  const nextTypes = new Array(agents.length);
+
+  for (let i = 0; i < agents.length; i++) {
+    const agent = agents[i];
     agent.show();
-    const type = agent.changeType({ agents, width: LEN_X });
-    copy.push(type);
+    nextTypes[i] = agent.changeType({ agents, width: LEN_X });
   }
 
   for (let i = 0; i < agents.length; i++) {
-    agents[i].type = copy[i];
+    agents[i].type = nextTypes[i];
   }
 }
