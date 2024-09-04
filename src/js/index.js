@@ -1,39 +1,55 @@
 const WIDTH = 600;
 const HEIGHT = 600;
-const ATOM_SIZE = 2;
+const ATOM_SIZE = 4;
 
 const LEN_X = WIDTH / ATOM_SIZE;
 const LEN_Y = HEIGHT / ATOM_SIZE;
 
-const FRAME_RATE = 5;
+const FRAME_RATE = 10;
 
 let START_GAME = true;
+const RULES = [];
 
 function setup() {
-  // frameRate(FRAME_RATE);
+  frameRate(FRAME_RATE);
   createCanvas(WIDTH, HEIGHT);
   background(0);
   setWorld();
 }
 
 function setWorld() {
-  for (let i = 0; i < 2; i++) {
-    const x = getRandom(0, 500);
-    const y = getRandom(0, 500);
-    new Atom({ x, y, color: 'red', size: ATOM_SIZE, group: 0 });
-  }
+  createGroupe(200, 'red');
+  createGroupe(200, 'yellow');
+  createGroupe(100, 'green');
+  createGroupe(50, 'blue');
 }
 
 function clearCanvas() {
   fill(0);
-  square(0, 0, WIDTH, HEIGHT);
+  beginShape();
+  vertex(0, 0);
+  vertex(0, HEIGHT);
+  vertex(WIDTH, HEIGHT);
+  vertex(WIDTH, 0);
+  endShape();
 }
 
 function draw() {
   if (!START_GAME) return;
   clearCanvas();
-  rule(Atom.items[0], Atom.items[0], -1);
+  for (const ruleData of RULES) {
+    const { atomsA, atomsB, g } = ruleData;
+    rule(atomsA, atomsB, g);
+  }
   Atom.draw();
+}
+
+function createGroupe(amount, color) {
+  for (let i = 0; i < amount; i++) {
+    const x = getRandom(0, 500);
+    const y = getRandom(0, 500);
+    new Atom({ x, y, color: color, size: ATOM_SIZE });
+  }
 }
 
 function rule(firstAtomGroup, secondAtomGroup, g) {
@@ -48,24 +64,24 @@ function rule(firstAtomGroup, secondAtomGroup, g) {
       const dy = atomA.y - atomB.y;
       const d = Math.sqrt(dx * dx + dy * dy);
 
-      if (d > 0) {
+      if (d > 0 && d < 80) {
         const F = (g * 1) / d;
         fx += F * dx;
         fy += F * dy;
       }
     }
 
-    atomA.vx = atomA.vx + fx;
-    atomA.vy = atomA.vy + fy;
+    atomA.vx = (atomA.vx + fx) * 0.5;
+    atomA.vy = (atomA.vy + fy) * 0.5;
 
     atomA.x += atomA.vx;
     atomA.y += atomA.vy;
 
-    if (atomA.x < 0 || atomA.x > WIDTH) {
-      arguments.vx *= -1;
+    if (atomA.x <= 0 || atomA.x >= WIDTH) {
+      atomA.vx *= -1;
     }
-    if (atomA.y < 0 || atomA.y > HEIGHT) {
-      arguments.vx *= -1;
+    if (atomA.y <= 0 || atomA.y >= HEIGHT) {
+      atomA.vy *= -1;
     }
   }
 }

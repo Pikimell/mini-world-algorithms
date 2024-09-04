@@ -1,19 +1,19 @@
 class Atom {
-  static items = [];
+  static items = {};
 
-  constructor({ x, y, color, velocity, size = 10, group = 0 }) {
+  constructor({ x, y, color, size = 10 }) {
     this.x = x;
     this.y = y;
     this.vx = 0;
     this.vy = 0;
     this.color = color;
     this.x = x;
-    this.size = 10;
+    this.size = size;
 
-    if (!Array.isArray(Atom.items[group])) {
-      Atom.items[group] = [];
+    if (!Array.isArray(Atom.items[color])) {
+      Atom.items[color] = [];
     }
-    Atom.items[group].push(this);
+    Atom.items[color].push(this);
   }
 
   draw() {
@@ -22,7 +22,7 @@ class Atom {
   }
 
   static draw() {
-    for (const group of Atom.items) {
+    for (const group of Object.values(Atom.items)) {
       for (const atom of group) {
         atom.draw();
       }
