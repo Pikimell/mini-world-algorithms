@@ -1,0 +1,29 @@
+{
+  "groups": [
+    { "name": "red", "amount": 500 },
+    { "name": "yellow", "amount": 500 },
+    { "name": "blue", "amount": 500 },
+    { "name": "white", "amount": 500 }
+  ],
+  "rules": [
+    { "g1": "red", "g2": "red", "value": -0.15 },
+    { "g1": "red", "g2": "yellow", "value": 0.23 },
+    { "g1": "red", "g2": "blue", "value": -0.45 },
+    { "g1": "red", "g2": "white", "value": 0.67 },
+
+    { "g1": "yellow", "g2": "red", "value": 0.12 },
+    { "g1": "yellow", "g2": "yellow", "value": 0.45 },
+    { "g1": "yellow", "g2": "blue", "value": -0.28 },
+    { "g1": "yellow", "g2": "white", "value": -0.33 },
+
+    { "g1": "blue", "g2": "red", "value": -0.17 },
+    { "g1": "blue", "g2": "yellow", "value": 0.34 },
+    { "g1": "blue", "g2": "blue", "value": -0.32 },
+    { "g1": "blue", "g2": "white", "value": 0.42 },
+
+    { "g1": "white", "g2": "red", "value": 0.21 },
+    { "g1": "white", "g2": "yellow", "value": -0.12 },
+    { "g1": "white", "g2": "blue", "value": 0.57 },
+    { "g1": "white", "g2": "white", "value": -0.08 }
+  ]
+}

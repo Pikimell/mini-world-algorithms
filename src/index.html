@@ -9,32 +9,36 @@
   </head>
   <body>
     <section class="sidebar">
-      <form class="form js-group-form">
-        <input type="text" placeholder="Color" name="name" />
-        <input type="number" placeholder="Amount" name="amount" />
-        <button>Create Group</button>
-      </form>
+      <div class="form-container">
+        <form class="form js-group-form">
+          <input type="text" placeholder="Color" name="name" />
+          <input type="number" placeholder="Amount" name="amount" />
+          <button>Create Group</button>
+        </form>
 
-      <form class="form js-rules-form">
-        <input type="text" placeholder="group1" name="g1" />
-        <input type="text" placeholder="group2" name="g2" />
-        <input type="text" placeholder="g" name="value" />
-        <button>Add Rule</button>
-      </form>
+        <form class="form js-rules-form">
+          <input type="text" placeholder="group1" name="g1" />
+          <input type="text" placeholder="group2" name="g2" />
+          <input type="text" placeholder="g" name="value" />
+          <button>Add Rule</button>
+        </form>
 
-      <form class="form js-config-form">
-        <textarea
-          name="config"
-          cols="17"
-          rows="10"
-          placeholder="json config"
-        ></textarea>
-        <button>Load Config</button>
-      </form>
+        <form class="form js-config-form">
+          <textarea
+            name="config"
+            cols="17"
+            rows="10"
+            placeholder="json config"
+          ></textarea>
+          <button>Load Config</button>
+        </form>
 
-      <div class="form">
-        <button>Save Config</button>
+        <div class="form">
+          <button class="js-random-rules">Random Rules</button>
+          <button class="js-save-config">Save Config</button>
+        </div>
       </div>
+      <div class="rules js-rules"></div>
     </section>
 
     <script src="./js/p5.js"></script>

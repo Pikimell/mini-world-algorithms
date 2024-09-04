@@ -1,0 +1,16 @@
+{
+  "groups": [
+    { "name": "red", "amount": 200 },
+    { "name": "yellow", "amount": 200 },
+    { "name": "green", "amount": 200 }
+  ],
+  "rules": [
+    { "g1": "green", "g2": "green", "value": -0.32 },
+    { "g1": "green", "g2": "red", "value": -0.17 },
+    { "g1": "green", "g2": "yellow", "value": 0.34 },
+    { "g1": "red", "g2": "red", "value": -0.1 },
+    { "g1": "red", "g2": "green", "value": -0.34 },
+    { "g1": "yellow", "g2": "yellow", "value": 0.15 },
+    { "g1": "yellow", "g2": "green", "value": -0.2 }
+  ]
+}

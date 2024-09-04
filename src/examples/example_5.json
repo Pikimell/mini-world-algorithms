@@ -1,0 +1,26 @@
+{
+  "groups": [
+    { "name": "red", "amount": 500 },
+    { "name": "yellow", "amount": 500 },
+    { "name": "blue", "amount": 500 },
+    { "name": "white", "amount": 500 }
+  ],
+  "rules": [
+    { "g1": "red", "g2": "red", "value": 0.7929791936011812 },
+    { "g1": "red", "g2": "yellow", "value": 0.5303745100251251 },
+    { "g1": "red", "g2": "blue", "value": 0.3645724572343849 },
+    { "g1": "red", "g2": "white", "value": -0.6960788585439195 },
+    { "g1": "yellow", "g2": "red", "value": 0.4301753548918019 },
+    { "g1": "yellow", "g2": "yellow", "value": 0.7063982838240657 },
+    { "g1": "yellow", "g2": "blue", "value": 0.8973979558656664 },
+    { "g1": "yellow", "g2": "white", "value": 0.6730382313958057 },
+    { "g1": "blue", "g2": "red", "value": -0.46093781333133443 },
+    { "g1": "blue", "g2": "yellow", "value": -0.9461959077245481 },
+    { "g1": "blue", "g2": "blue", "value": -0.7504691089489013 },
+    { "g1": "blue", "g2": "white", "value": 0.09590248442692029 },
+    { "g1": "white", "g2": "red", "value": 0.36187238073478967 },
+    { "g1": "white", "g2": "yellow", "value": 0.818435568944712 },
+    { "g1": "white", "g2": "blue", "value": 0.3524210857049448 },
+    { "g1": "white", "g2": "white", "value": -0.9967245833997063 }
+  ]
+}

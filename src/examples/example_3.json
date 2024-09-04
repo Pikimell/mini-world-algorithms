@@ -1,0 +1,19 @@
+{
+  "groups": [
+    { "name": "red", "amount": 1000 },
+    { "name": "yellow", "amount": 1000 },
+    { "name": "blue", "amount": 1000 },
+    { "name": "white", "amount": 1000 }
+  ],
+  "rules": [
+    { "g1": "blue", "g2": "blue", "value": -0.32 },
+    { "g1": "blue", "g2": "red", "value": -0.17 },
+    { "g1": "blue", "g2": "yellow", "value": 0.34 },
+    { "g1": "red", "g2": "red", "value": -0.1 },
+    { "g1": "red", "g2": "blue", "value": -0.34 },
+    { "g1": "yellow", "g2": "yellow", "value": 0.15 },
+    { "g1": "yellow", "g2": "blue", "value": -0.3 },
+    { "g1": "white", "g2": "red", "value": -0.6 },
+    { "g1": "white", "g2": "blue", "value": 0.3 }
+  ]
+}

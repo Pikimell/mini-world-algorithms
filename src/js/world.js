@@ -39,6 +39,18 @@ function rule(firstAtomGroup, secondAtomGroup, g) {
     if (atomA.y <= 0 || atomA.y >= HEIGHT) {
       atomA.vy *= -1;
     }
+
+    // if (atomA.x < 0) {
+    //   atomA.x += WIDTH;
+    // } else if (atomA.x > WIDTH) {
+    //   atomA.x -= WIDTH;
+    // }
+
+    // if (atomA.y < 0) {
+    //   atomA.y += HEIGHT;
+    // } else if (atomA.y > HEIGHT) {
+    //   atomA.y -= HEIGHT;
+    // }
   }
 }
 

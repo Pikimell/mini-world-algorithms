@@ -9,6 +9,13 @@
 
   height: 90vh;
   overflow: auto;
+  width: 700px;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .form {
@@ -20,8 +27,43 @@
   flex-direction: column;
   gap: 10px;
   font-size: 24px;
+  width: 250px;
 }
 
 .form * {
   font-size: 20px;
+}
+
+.rules {
+  width: 600px;
+
+  display: flex;
+  padding: 15px;
+  margin: 10px;
+  align-items: center;
+  gap: 15px;
+  border-radius: 15px;
+  border: 1px solid black;
+
+  flex-direction: column;
+}
+
+.rule-item {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rule-item * {
+  margin: 0;
+  padding: 0;
+}
+
+.rule-item p {
+  width: 180px;
+  overflow: hidden;
+  text-overflow: hidden;
+}
+.rule-item input {
+  width: 400px;
 }

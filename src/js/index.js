@@ -4,7 +4,7 @@ const HEIGHT = 600;
 const LEN_X = WIDTH / ATOM_SIZE;
 const LEN_Y = HEIGHT / ATOM_SIZE;
 
-const FRAME_RATE = 10;
+const FRAME_RATE = 20;
 
 let START_GAME = true;
 
@@ -12,7 +12,6 @@ function setup() {
   frameRate(FRAME_RATE);
   createCanvas(WIDTH, HEIGHT);
   background(0);
-  createGroup(100, 'red');
 }
 
 function clearCanvas() {
