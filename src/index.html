@@ -5,12 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <section class="sidebar">
+      <form class="form js-group-form">
+        <input type="text" placeholder="Color" name="name" />
+        <input type="number" placeholder="Amount" name="amount" />
+        <button>Create Group</button>
+      </form>
+
+      <form class="form js-rules-form">
+        <input type="text" placeholder="group1" name="g1" />
+        <input type="text" placeholder="group2" name="g2" />
+        <input type="text" placeholder="g" name="value" />
+        <button>Add Rule</button>
+      </form>
+
+      <form class="form js-config-form">
+        <textarea
+          name="config"
+          cols="17"
+          rows="10"
+          placeholder="json config"
+        ></textarea>
+        <button>Load Config</button>
+      </form>
+
+      <div class="form">
+        <button>Save Config</button>
+      </div>
+    </section>
+
     <script src="./js/p5.js"></script>
     <script src="./js/helpers.js"></script>
     <script src="./js/atom.js"></script>
     <script src="./js/world.js"></script>
+    <script src="./js/controllers.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>

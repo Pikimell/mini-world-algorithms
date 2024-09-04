@@ -1,0 +1,12 @@
+{
+  "groups": [
+    { "name": "red", "amount": 200 },
+    { "name": "yellow", "amount": 200 }
+  ],
+  "rules": [
+    { "g1": "red", "g2": "red", "value": 1 },
+    { "g1": "red", "g2": "yellow", "value": -0.5 },
+    { "g1": "yellow", "g2": "yellow", "value": -0.1 },
+    { "g1": "yellow", "g2": "red", "value": 0.3 }
+  ]
+}

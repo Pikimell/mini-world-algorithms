@@ -1,5 +1,6 @@
 class Atom {
   static items = {};
+  static rules = [];
 
   constructor({ x, y, color, size = 10 }) {
     this.x = x;
