@@ -11,15 +11,15 @@
     <section class="sidebar">
       <div class="form-container">
         <form class="form js-group-form">
-          <input type="text" placeholder="Color" name="name" />
-          <input type="number" placeholder="Amount" name="amount" />
+          <input type="text" placeholder="Color" name="name" required />
+          <input type="number" placeholder="Amount" name="amount" required />
           <button>Create Group</button>
         </form>
 
         <form class="form js-rules-form">
-          <input type="text" placeholder="group1" name="g1" />
-          <input type="text" placeholder="group2" name="g2" />
-          <input type="text" placeholder="g" name="value" />
+          <input type="text" placeholder="group1" name="g1" required />
+          <input type="text" placeholder="group2" name="g2" required />
+          <input type="text" placeholder="g" name="value" required />
           <button>Add Rule</button>
         </form>
 
@@ -29,6 +29,7 @@
             cols="17"
             rows="10"
             placeholder="json config"
+            required
           ></textarea>
           <button>Load Config</button>
         </form>
@@ -38,13 +39,18 @@
           <button class="js-save-config">Save Config</button>
         </div>
       </div>
-      <div class="rules js-rules"></div>
+      <div class="container js-rules"></div>
+      <div class="container js-atoms"></div>
+      <div class="container js-examples"></div>
     </section>
 
     <script src="./js/p5.js"></script>
+    <script src="./js/refs.js"></script>
+    <script src="./js/constants.js"></script>
     <script src="./js/helpers.js"></script>
     <script src="./js/atom.js"></script>
     <script src="./js/world.js"></script>
+    <script src="./js/render.js"></script>
     <script src="./js/controllers.js"></script>
     <script src="./js/index.js"></script>
   </body>

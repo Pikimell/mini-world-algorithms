@@ -34,7 +34,7 @@
   font-size: 20px;
 }
 
-.rules {
+.container {
   width: 600px;
 
   display: flex;
@@ -48,22 +48,22 @@
   flex-direction: column;
 }
 
-.rule-item {
+.item {
   width: 600px;
   display: flex;
   justify-content: space-between;
 }
 
-.rule-item * {
+.item * {
   margin: 0;
   padding: 0;
 }
 
-.rule-item p {
+.item p {
   width: 180px;
   overflow: hidden;
   text-overflow: hidden;
 }
-.rule-item input {
+.item input {
   width: 400px;
 }

@@ -1,12 +1,3 @@
-const refs = {
-  groupForm: document.querySelector('.js-group-form'),
-  rulesForm: document.querySelector('.js-rules-form'),
-  configForm: document.querySelector('.js-config-form'),
-  saveConfigBtn: document.querySelector('.js-save-config'),
-  rulesList: document.querySelector('.js-rules'),
-  randomRulesBtn: document.querySelector('.js-random-rules'),
-};
-
 refs.groupForm.addEventListener('submit', onGroupSubmit);
 refs.rulesForm.addEventListener('submit', onRuleSubmit);
 refs.configForm.addEventListener('submit', onLoadConfig);
@@ -20,7 +11,6 @@ function onGroupSubmit(e) {
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData.entries());
   createGroup(+data.amount, data.name);
-  console.log(Atom.items);
   e.target.reset();
 }
 function onRuleSubmit(e) {
@@ -50,7 +40,10 @@ function onLoadConfig(e) {
     const data = JSON.parse(json);
     loadConfig(data);
     renderRules(Atom.rules);
-  } catch {}
+    renderAtoms(data.groups);
+  } catch (err) {
+    console.log(err);
+  }
 
   e.target.reset();
 }
@@ -93,20 +86,4 @@ function onRandomRulesClick() {
     rule.value = rand * (isPositive ? 1 : -1);
   }
   renderRules(Atom.rules);
-}
-
-function ruleTemplate({ g1, g2, value }) {
-  return `<div class="rule-item">
-    <p>${g1} - ${g2} - ${value}</p>
-    <input type="range" min="-1" max="1" step="0.001" value="${value}" data-g1="${g1}" data-g2="${g2}"/>
-    <button data-g1="${g1}" data-g2="${g2}">x</button>
-    </div>`;
-}
-
-function rulesTemplate(rules) {
-  return rules.map(ruleTemplate).join('\n');
-}
-function renderRules(rules) {
-  const markup = rulesTemplate(rules);
-  refs.rulesList.innerHTML = markup;
 }

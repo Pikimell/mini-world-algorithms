@@ -1,11 +1,3 @@
-const WIDTH = 600;
-const HEIGHT = 600;
-
-const LEN_X = WIDTH / ATOM_SIZE;
-const LEN_Y = HEIGHT / ATOM_SIZE;
-
-const FRAME_RATE = 20;
-
 let START_GAME = true;
 
 function setup() {

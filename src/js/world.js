@@ -27,8 +27,8 @@ function rule(firstAtomGroup, secondAtomGroup, g) {
       }
     }
 
-    atomA.vx = (atomA.vx + fx) * 0.5;
-    atomA.vy = (atomA.vy + fy) * 0.5;
+    atomA.vx = (atomA.vx + fx) * SPEED_RATE;
+    atomA.vy = (atomA.vy + fy) * SPEED_RATE;
 
     atomA.x += atomA.vx;
     atomA.y += atomA.vy;
@@ -39,18 +39,6 @@ function rule(firstAtomGroup, secondAtomGroup, g) {
     if (atomA.y <= 0 || atomA.y >= HEIGHT) {
       atomA.vy *= -1;
     }
-
-    // if (atomA.x < 0) {
-    //   atomA.x += WIDTH;
-    // } else if (atomA.x > WIDTH) {
-    //   atomA.x -= WIDTH;
-    // }
-
-    // if (atomA.y < 0) {
-    //   atomA.y += HEIGHT;
-    // } else if (atomA.y > HEIGHT) {
-    //   atomA.y -= HEIGHT;
-    // }
   }
 }
 
