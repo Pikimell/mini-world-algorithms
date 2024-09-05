@@ -1,4 +1,8 @@
+body {
+  background-color: black;
+}
 .sidebar {
+  background: rgb(255, 255, 255);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -10,6 +14,13 @@
   height: 90vh;
   overflow: auto;
   width: 700px;
+  transition: all 2s;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.sidebar.hide {
+  right: -1000px;
 }
 
 .form-container {

@@ -1,9 +1,7 @@
-const ATOM_SIZE = 4;
-
 function createGroup(amount, color) {
   for (let i = 0; i < amount; i++) {
-    const x = getRandom(0, 500);
-    const y = getRandom(0, 500);
+    const x = getRandom(0, WIDTH);
+    const y = getRandom(0, HEIGHT);
     new Atom({ x, y, color: color, size: ATOM_SIZE });
   }
 }
@@ -20,7 +18,7 @@ function rule(firstAtomGroup, secondAtomGroup, g) {
       const dy = atomA.y - atomB.y;
       const d = Math.sqrt(dx * dx + dy * dy);
 
-      if (d > 0 && d < 80) {
+      if (d > 0 && d < MAX_DISTANCE) {
         const F = (g * 1) / d;
         fx += F * dx;
         fy += F * dy;

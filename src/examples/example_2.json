@@ -1,7 +1,7 @@
 {
   "groups": [
     { "name": "red", "amount": 200 },
-    { "name": "yellow", "amount": 200 },
+    { "name": "yellow", "amount": 500 },
     { "name": "green", "amount": 200 }
   ],
   "rules": [

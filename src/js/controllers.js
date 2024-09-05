@@ -5,6 +5,10 @@ refs.saveConfigBtn.addEventListener('click', onSaveConfig);
 refs.rulesList.addEventListener('change', onRuleChange);
 refs.rulesList.addEventListener('click', onRuleRemove);
 refs.randomRulesBtn.addEventListener('click', onRandomRulesClick);
+refs.sizeInput.addEventListener('input', onSizeChange);
+refs.speedInput.addEventListener('input', onSpeedChange);
+refs.adminPanelBtn.addEventListener('click', onAdminPanelClick);
+refs.fullScreenBtn.addEventListener('click', onFullScreenBtnClick);
 
 function onGroupSubmit(e) {
   e.preventDefault();
@@ -22,7 +26,7 @@ function onRuleSubmit(e) {
   const rule = {
     g1: data.g1,
     g2: data.g2,
-    value: +data.value,
+    value: +data.value / 200,
   };
 
   Atom.rules.push(rule);
@@ -86,4 +90,28 @@ function onRandomRulesClick() {
     rule.value = rand * (isPositive ? 1 : -1);
   }
   renderRules(Atom.rules);
+}
+function onAdminPanelClick(e) {
+  if (refs.adminPanel.classList.contains('hide')) {
+    refs.adminPanel.classList.remove('hide');
+  } else {
+    refs.adminPanel.classList.add('hide');
+  }
+}
+
+function onFullScreenBtnClick() {
+  if (WIDTH > 600) {
+    WIDTH = 500;
+    HEIGHT = 500;
+  } else {
+    WIDTH = screen.width - 20;
+    HEIGHT = screen.height - 200;
+  }
+}
+
+function onSizeChange(e) {
+  ATOM_SIZE = +e.target.value;
+}
+function onSpeedChange(e) {
+  SPEED_RATE = +e.target.value;
 }

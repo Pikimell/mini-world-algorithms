@@ -6,4 +6,9 @@ const refs = {
   rulesList: document.querySelector('.js-rules'),
   atomsList: document.querySelector('.js-atoms'),
   randomRulesBtn: document.querySelector('.js-random-rules'),
+  sizeInput: document.querySelector('.js-size'),
+  speedInput: document.querySelector('.js-speed'),
+  adminPanelBtn: document.querySelector('.js-admin-panel-btn'),
+  adminPanel: document.querySelector('.js-admin-panel'),
+  fullScreenBtn: document.querySelector('.js-full-screen'),
 };

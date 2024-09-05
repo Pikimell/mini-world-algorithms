@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="sidebar">
+    <section class="sidebar js-admin-panel">
       <div class="form-container">
         <form class="form js-group-form">
           <input type="text" placeholder="Color" name="name" required />
@@ -19,7 +19,15 @@
         <form class="form js-rules-form">
           <input type="text" placeholder="group1" name="g1" required />
           <input type="text" placeholder="group2" name="g2" required />
-          <input type="text" placeholder="g" name="value" required />
+          <input
+            type="range"
+            min="-200"
+            max="200"
+            placeholder="g"
+            name="value"
+            required
+            value="0"
+          />
           <button>Add Rule</button>
         </form>
 
@@ -35,6 +43,15 @@
         </form>
 
         <div class="form">
+          <input type="range" min="1" max="20" class="js-size" value="1" />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            class="js-speed"
+            value="0.5"
+            step="0.05"
+          />
           <button class="js-random-rules">Random Rules</button>
           <button class="js-save-config">Save Config</button>
         </div>
@@ -43,6 +60,9 @@
       <div class="container js-atoms"></div>
       <div class="container js-examples"></div>
     </section>
+
+    <button class="js-admin-panel-btn">AdminPanel</button>
+    <button class="js-full-screen">FullScreen</button>
 
     <script src="./js/p5.js"></script>
     <script src="./js/refs.js"></script>

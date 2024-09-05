@@ -3,17 +3,18 @@ let START_GAME = true;
 function setup() {
   frameRate(FRAME_RATE);
   createCanvas(WIDTH, HEIGHT);
-  background(0);
+  background(255);
 }
 
 function clearCanvas() {
-  fill(0);
-  beginShape();
-  vertex(0, 0);
-  vertex(0, HEIGHT);
-  vertex(WIDTH, HEIGHT);
-  vertex(WIDTH, 0);
-  endShape();
+  background(0);
+  // fill(0);
+  // beginShape();
+  // vertex(0, 0);
+  // vertex(0, HEIGHT);
+  // vertex(WIDTH, HEIGHT);
+  // vertex(WIDTH, 0);
+  // endShape();
 }
 
 function draw() {

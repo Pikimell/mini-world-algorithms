@@ -1,0 +1,7 @@
+{
+  "groups": [
+    { "name": "white", "amount": 1 },
+    { "name": "red", "amount": 5 }
+  ],
+  "rules": [{ "g1": "red", "g2": "white", "value": -1 }]
+}
